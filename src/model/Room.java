@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * This is the Room model.
+ */
 public class Room implements IRoom{
 
    protected String roomNumber;
@@ -7,13 +10,7 @@ public class Room implements IRoom{
    protected boolean isFree;
    protected RoomTypes.RoomType enumeration;
 
-    /**
-     * This is the Room model
-     * @param roomNumber
-     * @param price
-     * @param enumeration
-     * @param isFree
-     */
+
    public Room(String roomNumber, Double price, RoomTypes.RoomType enumeration, boolean isFree){
        super();
        this.roomNumber = roomNumber;
