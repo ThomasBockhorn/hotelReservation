@@ -60,6 +60,19 @@ public class ReservationService {
        return resultList;
     }
 
+    public String printAllRooms(){
+
+        String resultList;
+
+        resultList = "The List of all Rooms: " + "\n";
+
+        for(Room rooms : roomList){
+            resultList += rooms.toString();
+        };
+
+        return resultList;
+    }
+
 
     public Reservation getCustomerReservation(Customer customer){
 

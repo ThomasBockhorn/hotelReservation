@@ -73,5 +73,9 @@ public class Driver {
 
         System.out.println(service.printAllReservation());
 
+        System.out.println("------------------------------------------------------------------------");
+
+        System.out.println(service.printAllRooms());
+
     }
 }

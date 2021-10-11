@@ -32,4 +32,19 @@ public class CustomerService {
 
         return result.iterator().next();
     }
+
+    public String printAllCustomers(){
+
+        String customerList;
+
+        customerList = "List of all Customers: " + "\n";
+
+        for(Customer customer: customers){
+
+            customerList += customer.toString();
+
+        }
+
+        return customerList;
+    }
 }
