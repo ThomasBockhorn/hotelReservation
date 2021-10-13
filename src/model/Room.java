@@ -21,7 +21,8 @@ public class Room implements IRoom{
 
     @Override
    public String toString(){
-       return "Room number: " + roomNumber + "\n" +
+       return "---------------------------------" + "\n" +
+               "Room number: " + roomNumber + "\n" +
                "Price: " + price + "\n" +
                "Single or Double: " + enumeration + "\n"+
                "Available: " + isFree + "\n";
