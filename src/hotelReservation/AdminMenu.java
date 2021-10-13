@@ -55,9 +55,9 @@ public class AdminMenu {
                             System.out.println("Is it free?");
                             String isFree = scanner.nextLine();
 
-                           /** reservationService.addRoom(roomNumber,Double.valueOf(price),
-                                    RoomTypes.RoomType.valueOf(enumeration) ,Boolean.parseBoolean(isFree));**/
-                           reservationService.addRoom("102", 234.45, RoomTypes.RoomType.DOUBLE, true);
+                           reservationService.addRoom(roomNumber,Double.valueOf(price),
+                                    RoomTypes.RoomType.valueOf(enumeration) ,Boolean.parseBoolean(isFree));
+
                         } catch(Exception ex){
                             System.out.println("Invalid input.  Please try again.");
                         }
