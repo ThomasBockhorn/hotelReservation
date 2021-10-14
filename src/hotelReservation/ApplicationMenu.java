@@ -2,9 +2,8 @@ package hotelReservation;
 
 import api.AdminResource;
 import api.HotelResource;
-import model.Customer;
+import hotelReservation.applicationMenu.ReserveARoom;
 
-import model.Room;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -14,8 +13,8 @@ public class ApplicationMenu {
 
 
         boolean keepRunning = true;
-
-        try(Scanner scanner = new Scanner(System.in)){
+        Scanner scanner = new Scanner(System.in);
+        try(scanner){
 
             while(keepRunning){
                 try{
@@ -48,30 +47,9 @@ public class ApplicationMenu {
                          */
                         case 2:
                             System.out.println("======================== Reserve a Room ===========================");
+                            ReserveARoom reserveARoom = new ReserveARoom();
+                            reserveARoom.ReserveARoom(scanner, hotelResource);
 
-                            try{
-
-                                System.out.println("Enter your email address");
-                                String email = scanner.nextLine();
-
-                                System.out.println("Enter the room number:");
-                                String roomNumber = scanner.nextLine();
-
-                                System.out.println("Enter your check-in date YYYY-MM-DD");
-                                String checkInDate = scanner.nextLine();
-
-                                System.out.println("Enter your check-out date YYYY-MM-DD");
-                                String checkOutDate = scanner.nextLine();
-
-                                Customer customer = hotelResource.getCustomer(email);
-                                Room roomID = hotelResource.getRoom(roomNumber, true);
-
-                                hotelResource.bookARoom(customer, roomID, LocalDate.parse(checkInDate),
-                                        LocalDate.parse(checkOutDate));
-
-                            }catch(Exception ex){
-                                System.out.println("Please reenter your information");
-                            }
                             break;
 
                         /**
@@ -137,8 +115,6 @@ public class ApplicationMenu {
                 } catch (Exception exMain){
                     System.out.println("\n Invalid Input \n");
                     System.out.println("Main exception: " + exMain);
-                    System.out.println("Enter your selection");
-                    scanner.nextLine();
                 }
             }
         }
