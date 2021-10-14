@@ -31,7 +31,7 @@ public class ReserveARoom {
                 Room roomID = hotelResource.getRoom(roomNumber, true);
 
                 hotelResource.bookARoom(customer, roomID, LocalDate.parse(checkInDate),
-                        LocalDate.parse(checkOutDate));
+                        LocalDate.parse(checkOutDate), false);
                 keepRunning = false;
 
             }catch(Exception ex){

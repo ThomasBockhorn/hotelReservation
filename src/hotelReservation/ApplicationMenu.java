@@ -7,16 +7,15 @@ import hotelReservation.applicationMenu.FindARoom;
 import hotelReservation.applicationMenu.ReserveARoom;
 import hotelReservation.applicationMenu.SeeMyReservations;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ApplicationMenu {
 
     public void ApplicationMenu(AdminResource adminResource, HotelResource hotelResource){
 
-
         boolean keepRunning = true;
         Scanner scanner = new Scanner(System.in);
+
         try(scanner){
 
             while(keepRunning){

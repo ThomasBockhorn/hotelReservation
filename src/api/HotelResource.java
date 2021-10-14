@@ -42,9 +42,9 @@ public class HotelResource {
 
     }
 
-    public void bookARoom(Customer customer, Room room, LocalDate checkInDate, LocalDate checkOutDate){
+    public void bookARoom(Customer customer, Room room, LocalDate checkInDate, LocalDate checkOutDate, Boolean isFree){
 
-        reservationServiceSession.reserveARoom(customer, room, checkInDate, checkOutDate);
+        reservationServiceSession.reserveARoom(customer, room, checkInDate, checkOutDate, isFree);
 
     }
 

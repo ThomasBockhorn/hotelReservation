@@ -11,13 +11,15 @@ public class Reservation {
      IRoom room;
      LocalDate checkInDate;
      LocalDate checkOutDate;
+     Boolean isFree;
 
-     public Reservation(Customer customer, IRoom room, LocalDate checkInDate, LocalDate checkOutDate ){
+     public Reservation(Customer customer, IRoom room, LocalDate checkInDate, LocalDate checkOutDate, Boolean isFree ){
          super();
          this.customer = customer;
          this.room = room;
          this.checkInDate = checkInDate;
          this.checkOutDate = checkOutDate;
+         this.isFree = isFree;
      }
 
     /**
@@ -39,6 +41,10 @@ public class Reservation {
         return checkOutDate;
     }
 
+    public Boolean getFree() {
+        return isFree;
+    }
+
     /**
      * Setters
      */
@@ -56,6 +62,10 @@ public class Reservation {
 
     public void setRoom(IRoom room) {
         this.room = room;
+    }
+
+    public void setFree(Boolean free) {
+        isFree = free;
     }
 
     /**

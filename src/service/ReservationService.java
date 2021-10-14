@@ -41,9 +41,9 @@ public class ReservationService {
     }
 
 
-    public void reserveARoom (Customer customer, IRoom room, LocalDate checkInDate, LocalDate checkOutDate){
+    public void reserveARoom (Customer customer, IRoom room, LocalDate checkInDate, LocalDate checkOutDate, Boolean isFree){
 
-        Reservation reservation = new Reservation(customer,room,checkInDate,checkOutDate);
+        Reservation reservation = new Reservation(customer,room,checkInDate,checkOutDate, isFree);
         reservations.add(reservation);
     }
 
@@ -56,7 +56,7 @@ public class ReservationService {
 
       for(Reservation reservationEntry: reservations){
            resultList += reservationEntry.toString();
-       };
+       }
 
        return resultList;
     }
@@ -69,7 +69,7 @@ public class ReservationService {
 
         for(Room rooms : roomList){
             resultList += rooms.toString();
-        };
+        }
 
         return resultList;
     }
@@ -82,7 +82,7 @@ public class ReservationService {
                 .filter(picked -> customer.getLastName().equals(picked.getCustomer().getLastName()))
                 .filter(picked -> customer.getEmail().equals(picked.getCustomer().getEmail()))
                 .map( picked -> new Reservation( picked.getCustomer(), picked.getRoom(),
-                        picked.getCheckInDate(), picked.getCheckOutDate()))
+                        picked.getCheckInDate(), picked.getCheckOutDate(), picked.getFree()))
                 .collect(Collectors.toList());
 
         return result.iterator().next();
@@ -95,7 +95,7 @@ public class ReservationService {
                 .filter( pickedDate -> checkInDate.isEqual(pickedDate.getCheckInDate()))
                 .filter( pickedDate -> checkOutDate.isEqual(pickedDate.getCheckOutDate()))
                 .map( pickedDate -> new Reservation( pickedDate.getCustomer(),
-                        pickedDate.getRoom(), pickedDate.getCheckInDate(), pickedDate.getCheckOutDate()))
+                        pickedDate.getRoom(), pickedDate.getCheckInDate(), pickedDate.getCheckOutDate(), pickedDate.getFree()))
                 .collect(Collectors.toList());
         if(resultList.isEmpty()){
             return null;
@@ -113,7 +113,7 @@ public class ReservationService {
                         pickedReservation.isFree()))
                 .collect(Collectors.toList());
 
-        return roomList.iterator().next();
+        return resultList.iterator().next();
     }
 
 }
