@@ -21,14 +21,9 @@ public class ApplicationMenu {
 
             while(keepRunning){
                 try{
-                    System.out.println("========================= Main Menu ===============================");
-                    System.out.println("1. Find a room");
-                    System.out.println("2. Reserve a room");
-                    System.out.println("3. See my reservation");
-                    System.out.println("4. Create an account");
-                    System.out.println("5. Admin");
-                    System.out.println("6. Exit");
-                    System.out.println("Enter your selection");
+                    System.out.println("========================= Main Menu ===============================" + "\n" +
+                            "1. Find a room" + "\n" + "2. Reserve a room" + "\n" + "3. See my reservation" + "\n" +
+                            "4. Create an account" + "\n" + "5. Admin" + "\n" + "6. Exit" + "\n" + "Enter your selection");
                     int selection = Integer.parseInt(scanner.nextLine());
 
 
