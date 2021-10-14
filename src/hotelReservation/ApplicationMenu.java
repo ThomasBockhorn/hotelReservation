@@ -95,6 +95,7 @@ public class ApplicationMenu {
                          * Quit
                          */
                         case 6:
+                            System.out.println("Have a great day!!");
                             keepRunning = false;
                     }
 
