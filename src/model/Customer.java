@@ -2,6 +2,11 @@ package model;
 
 import java.util.regex.Pattern;
 
+/**
+ * This is the model Customer class.  This will set up what sorts of information a customer object will have
+ * and it will format the email string to include and @.
+ */
+
 public class Customer {
 
     private String firstName;

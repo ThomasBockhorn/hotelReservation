@@ -3,8 +3,9 @@ package model;
 import java.time.LocalDate;
 
 /**
- * Reservation model
+ * This is the reservation model that contains all the information necessary for the reservation object
  */
+
 public class Reservation {
      Customer customer;
      IRoom room;

@@ -3,6 +3,7 @@ package model;
 /**
  * This is the Room model.
  */
+
 public class Room implements IRoom{
 
    protected String roomNumber;
