@@ -28,57 +28,74 @@ public class AdminMenu {
 
                     int selection = Integer.parseInt(scanner.nextLine());
 
-                    if (selection == 1) {
+                    switch (selection) {
 
-                        System.out.println("=============== See all customers ===================");
-                        System.out.println(adminResource.getAllCustomers());
+                        /**
+                         * See All Customers
+                         */
+                        case 1:
+                            System.out.println("=============== See all customers ===================");
+                            System.out.println(adminResource.getAllCustomers());
+                            break;
 
-                    } else if (selection == 2) {
+                        /**
+                         * See All Rooms
+                         **/
+                        case 2:
+                            System.out.println("================ See all rooms ========================");
+                            System.out.println(adminResource.getAllRooms());
+                            break;
 
-                        System.out.println("================ See all rooms ========================");
-                        System.out.println(adminResource.getAllRooms());
+                        /**
+                         * See All Reservations
+                         */
+                        case 3:
+                            System.out.println("================ See all reservations ==================");
+                            System.out.println(adminResource.displayAllReservations());
+                            break;
 
-                    } else if (selection == 3) {
+                        /**
+                         * Add A Room
+                         */
+                        case 4:
+                            System.out.println("================ Add a room =============================");
 
-                        System.out.println("================ See all reservations ==================");
-                        System.out.println(adminResource.displayAllReservations());
+                            try {
+                                System.out.println("What is the room number?");
+                                String roomNumber = scanner.nextLine();
 
-                    } else if (selection == 4) {
+                                System.out.println("What is the price?");
+                                String price = scanner.nextLine();
 
-                        System.out.println("================ Add a room =============================");
+                                System.out.println("What is the room type?");
+                                String enumeration = scanner.nextLine();
 
-                        try{
-                            System.out.println("What is the room number?");
-                            String roomNumber = scanner.nextLine();
+                                System.out.println("Is it free?");
+                                String isFree = scanner.nextLine();
 
-                            System.out.println("What is the price?");
-                            String price = scanner.nextLine();
+                                adminResource.addRoom(roomNumber, Double.valueOf(price),
+                                        RoomTypes.RoomType.valueOf(enumeration), Boolean.parseBoolean(isFree));
 
-                            System.out.println("What is the room type?");
-                            String enumeration = scanner.nextLine();
+                            } catch (Exception ex) {
+                                System.out.println("Invalid input.  Please try again.");
+                            }
+                            break;
 
-                            System.out.println("Is it free?");
-                            String isFree = scanner.nextLine();
+                        /**
+                         * Goes back to the main menu
+                         */
+                        case 5:
+                            keepRunning = false;
 
-                           adminResource.addRoom(roomNumber,Double.valueOf(price),
-                                    RoomTypes.RoomType.valueOf(enumeration) ,Boolean.parseBoolean(isFree));
+                            ApplicationMenu menu = new ApplicationMenu();
+                            menu.ApplicationMenu(adminResource, hotelResource);
 
-                        } catch(Exception ex){
-                            System.out.println("Invalid input.  Please try again.");
-                        }
+                            break;
+                         }
 
-
-                    } else if (selection == 5) {
-                        keepRunning = false;
-
-                        ApplicationMenu menu = new ApplicationMenu();
-                        menu.ApplicationMenu(adminResource, hotelResource);
-                    } else {
-                        System.out.println("Please enter your selection");
-                    }
-                } catch (Exception exAdmin) {
+                     } catch (Exception exAdmin){
                     System.out.println("\n Invalid Input \n");
-                    System.out.println("Admin exception:"+ exAdmin);
+                    System.out.println("Admin exception:" + exAdmin);
                 }
             }
         }
