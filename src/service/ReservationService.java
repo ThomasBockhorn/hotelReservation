@@ -78,6 +78,8 @@ public class ReservationService {
     public Reservation getCustomerReservation ( Customer customer ){
 
         List<Reservation> result = reservations.stream()
+                .filter(picked -> customer.getFirstName().equals(picked.getCustomer().getFirstName()))
+                .filter(picked -> customer.getLastName().equals(picked.getCustomer().getLastName()))
                 .filter(picked -> customer.getEmail().equals(picked.getCustomer().getEmail()))
                 .map( picked -> new Reservation( picked.getCustomer(), picked.getRoom(),
                         picked.getCheckInDate(), picked.getCheckOutDate()))

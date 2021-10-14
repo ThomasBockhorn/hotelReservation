@@ -1,6 +1,5 @@
 package api;
 
-import model.Customer;
 import model.RoomTypes;
 import service.CustomerService;
 import service.ReservationService;
@@ -19,12 +18,6 @@ public class AdminResource {
         super();
         customerServiceSession = new CustomerService();
         reservationServiceSession = new ReservationService();
-    }
-
-    public Customer getCustomer(String email){
-
-        return customerServiceSession.getCustomer(email);
-
     }
 
     public void addRoom(String roomNumber, Double price, RoomTypes.RoomType enumeration, boolean isFree){

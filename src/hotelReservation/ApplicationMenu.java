@@ -4,6 +4,8 @@ import api.AdminResource;
 import api.HotelResource;
 import hotelReservation.applicationMenu.CreateAAccount;
 import hotelReservation.applicationMenu.ReserveARoom;
+import hotelReservation.applicationMenu.SeeMyReservations;
+import model.Customer;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -57,21 +59,8 @@ public class ApplicationMenu {
                          */
                         case 3:
                             System.out.println("======================== See my Reservation ========================");
-
-                            try{
-                                System.out.println("Enter your check in date: YYYY-MM-DD");
-                                String checkInDate = scanner.nextLine();
-
-                                System.out.println("Enter your check out date: YYYY-MM-DD");
-                                String checkOutDate = scanner.nextLine();
-
-
-                                System.out.println(hotelResource.findARoom(LocalDate.parse(checkInDate), LocalDate.parse(checkOutDate)));
-
-
-                            } catch( Exception ex ){
-                                System.out.println("Please reenter information");
-                            }
+                            SeeMyReservations seeMyReservations = new SeeMyReservations();
+                            seeMyReservations.SeeMyReservations(scanner, hotelResource);
                             break;
 
                         /**
@@ -88,7 +77,7 @@ public class ApplicationMenu {
                          */
                         case 5:
                             AdminMenu choice = new AdminMenu();
-                            choice.AdminMenu( scanner, hotelResource, adminResource );
+                            choice.AdminMenu( scanner, hotelResource, adminResource);
                             break;
 
                         /**

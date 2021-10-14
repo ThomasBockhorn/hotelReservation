@@ -54,4 +54,9 @@ public class HotelResource {
 
     }
 
+    public Reservation findACustomerReservation(Customer customer){
+
+        return reservationServiceSession.getCustomerReservation(customer);
+    }
+
 }
