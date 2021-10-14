@@ -4,6 +4,10 @@ package hotelReservation;
 import api.AdminResource;
 import api.HotelResource;
 
+/**
+ * This is the application hooks unto
+ */
+
 public class MainMenu {
 
    public static void main(String [] arcs){
