@@ -22,11 +22,6 @@ public class AdminMenu {
                     System.out.println("=================== Admin menu =======================" + "\n"
                     + "1. See all customers" + "\n" + "2. See all rooms" + "\n" + "3. See all reservations" +
                     "\n" + "4. Add a room" + "\n" + "5. Back to main menu");
-                   /** System.out.println("1. See all customers");
-                    System.out.println("2. See all rooms");
-                    System.out.println("3. See all reservations");
-                    System.out.println("4. Add a room");
-                    System.out.println("5. Back to main menu");**/
 
                     int selection = Integer.parseInt(scanner.nextLine());
 
@@ -62,24 +57,29 @@ public class AdminMenu {
                         case 4:
                             System.out.println("================ Add a room =============================");
 
-                            try {
-                                System.out.println("What is the room number?");
-                                String roomNumber = scanner.nextLine();
+                            boolean running = true;
+                            while(running){
+                                try {
+                                    System.out.println("What is the room number?");
+                                    String roomNumber = scanner.nextLine();
 
-                                System.out.println("What is the price?");
-                                String price = scanner.nextLine();
+                                    System.out.println("What is the price?");
+                                    String price = scanner.nextLine();
 
-                                System.out.println("What is the room type?");
-                                String enumeration = scanner.nextLine();
+                                    System.out.println("What is the room type?");
+                                    String enumeration = scanner.nextLine();
 
-                                System.out.println("Is it free?");
-                                String isFree = scanner.nextLine();
+                                    System.out.println("Is it free?");
+                                    String isFree = scanner.nextLine();
 
-                                adminResource.addRoom(roomNumber, Double.valueOf(price),
-                                        RoomTypes.RoomType.valueOf(enumeration), Boolean.parseBoolean(isFree));
+                                    adminResource.addRoom(roomNumber, Double.valueOf(price),
+                                            RoomTypes.RoomType.valueOf(enumeration), Boolean.parseBoolean(isFree));
+                                    running = false;
 
-                            } catch (Exception ex) {
-                                System.out.println("Invalid input.  Please try again.");
+                                } catch (Exception ex) {
+                                    System.out.println("Invalid input.  Please try again.");
+                                    running = true;
+                                }
                             }
                             break;
 
