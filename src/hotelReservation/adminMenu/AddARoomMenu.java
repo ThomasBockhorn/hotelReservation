@@ -1,0 +1,36 @@
+package hotelReservation.adminMenu;
+
+import model.RoomTypes;
+
+import java.util.Scanner;
+import api.AdminResource;
+
+public class AddARoomMenu {
+
+    public void addARoomMenu(Scanner scanner, AdminResource adminResource ){
+        boolean keepRunning = true;
+        while(keepRunning){
+            try {
+                System.out.println("What is the room number?");
+                String roomNumber = scanner.nextLine();
+
+                System.out.println("What is the price?");
+                String price = scanner.nextLine();
+
+                System.out.println("What is the room type?");
+                String enumeration = scanner.nextLine();
+
+                System.out.println("Is it free?");
+                String isFree = scanner.nextLine();
+
+                adminResource.addRoom(roomNumber, Double.valueOf(price),
+                        RoomTypes.RoomType.valueOf(enumeration), Boolean.parseBoolean(isFree));
+                keepRunning = false;
+
+            } catch (Exception ex) {
+                System.out.println("Invalid input.  Please try again.");
+                keepRunning = true;
+            }
+        }
+    }
+}

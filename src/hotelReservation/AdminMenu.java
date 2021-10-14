@@ -2,9 +2,7 @@ package hotelReservation;
 
 import api.AdminResource;
 import api.HotelResource;
-import model.RoomTypes;
-import service.CustomerService;
-import service.ReservationService;
+import hotelReservation.adminMenu.AddARoomMenu;
 
 import java.util.Scanner;
 
@@ -56,31 +54,9 @@ public class AdminMenu {
                          */
                         case 4:
                             System.out.println("================ Add a room =============================");
+                            AddARoomMenu addARoomMenu = new AddARoomMenu();
+                            addARoomMenu.addARoomMenu(scanner,adminResource);
 
-                            boolean running = true;
-                            while(running){
-                                try {
-                                    System.out.println("What is the room number?");
-                                    String roomNumber = scanner.nextLine();
-
-                                    System.out.println("What is the price?");
-                                    String price = scanner.nextLine();
-
-                                    System.out.println("What is the room type?");
-                                    String enumeration = scanner.nextLine();
-
-                                    System.out.println("Is it free?");
-                                    String isFree = scanner.nextLine();
-
-                                    adminResource.addRoom(roomNumber, Double.valueOf(price),
-                                            RoomTypes.RoomType.valueOf(enumeration), Boolean.parseBoolean(isFree));
-                                    running = false;
-
-                                } catch (Exception ex) {
-                                    System.out.println("Invalid input.  Please try again.");
-                                    running = true;
-                                }
-                            }
                             break;
 
                         /**
