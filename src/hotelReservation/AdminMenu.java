@@ -16,6 +16,7 @@ public class AdminMenu {
     public void AdminMenu(Scanner scanner, HotelResource hotelResource, AdminResource adminResource){
 
         boolean keepRunning = true;
+        AddARoomMenu addARoomMenu = new AddARoomMenu();
 
         try(scanner) {
 
@@ -59,7 +60,6 @@ public class AdminMenu {
                          */
                         case 4:
                             System.out.println("================ Add a room =============================");
-                            AddARoomMenu addARoomMenu = new AddARoomMenu();
                             addARoomMenu.addARoomMenu(scanner,adminResource);
                             break;
 
