@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 public class CustomerService {
 
     private Customer customer;
-    static List<Customer> customers;
+    static LinkedList<Customer> customers;
 
     public CustomerService(){
         customers = new LinkedList<>();
     }
 
-    public void addCustomer(String email, String firstName, String lastName){
+    public void addCustomer(String firstName, String lastName, String email){
 
        customer = new Customer(firstName, lastName, email);
        customers.add(customer);

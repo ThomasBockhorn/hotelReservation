@@ -4,18 +4,12 @@ import java.util.regex.Pattern;
 
 public class Customer {
 
-    protected String firstName;
-    protected String lastName;
-    protected String email;
+    private String firstName;
+    private String lastName;
+    private String email;
     protected final String emailRegex = "^(.+)@(.+).(.+)$";
     protected final Pattern pattern = Pattern.compile(emailRegex);
 
-    /**
-     * This is the class model for customer
-     * @param firstName
-     * @param lastName
-     * @param email
-     */
 
     public Customer(String firstName, String lastName, String email){
         super();

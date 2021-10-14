@@ -15,7 +15,7 @@ public class Driver {
 
         CustomerService customer = new CustomerService();
 
-        customer.addCustomer("thomas.bockhorn@gmail.com", "Thomas", "Bockhorn");
+        customer.addCustomer("Thomas", "Bockhorn", "thomas.bockhorn@gmail.com");
 
         System.out.println(customer.getCustomer("thomas.bockhorn@gmail.com"));
 
@@ -27,7 +27,7 @@ public class Driver {
         
         service.addRoom("100", 102.00, RoomTypes.RoomType.DOUBLE, true);
 
-        System.out.println(service.getARoom("100"));
+        System.out.println(service.getARoom("100", true));
 
 
         System.out.println("-------------------------------------------------------------------------------------------");
@@ -73,9 +73,18 @@ public class Driver {
 
         System.out.println(service.printAllReservation());
 
-        System.out.println("------------------------------------------------------------------------");
+        System.out.println("==========================================================================");
 
-        System.out.println(service.printAllRooms());
+        //System.out.println(service.printAllRooms());
+
+        System.out.println(service.getARoom("100", true));
+        //System.out.println(customer.getCustomer("thomas.bockhorn@gmail.com"));
+        Customer customer99 = customer.getCustomer("thomas.bockhorn@gmail.com");
+
+        System.out.println("============================================================================");
+        Customer customer999 = customer.getCustomer("thomas.bockhorn@tecktonet.com");
+
+        System.out.println(service.getCustomerReservation(customer.getCustomer("thomas.bockhorn@tecktonet.com")));
 
     }
 }

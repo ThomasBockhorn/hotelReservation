@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class ReservationService {
 
     static LinkedList<Reservation> reservations;
-    static List<Room> roomList;
+    static LinkedList<Room> roomList;
 
 
     public ReservationService(){
@@ -28,10 +28,11 @@ public class ReservationService {
         roomList.add(newRoom);
     }
 
-    public Room getARoom(String roomID){
+    public Room getARoom(String roomID, Boolean isFree){
 
        List<Room> result = roomList.stream()
                .filter(pickedRoom -> roomID.equals(pickedRoom.getRoomNumber()))
+               .filter(pickedRoom -> isFree.equals(pickedRoom.isFree()))
                .map(pickedRoom -> new Room(pickedRoom.getRoomNumber(), pickedRoom.getRoomPrice(),
                        pickedRoom.getRoomType(), pickedRoom.isFree()))
                .collect(Collectors.toList());
@@ -74,15 +75,15 @@ public class ReservationService {
     }
 
 
-    public Reservation getCustomerReservation(Customer customer){
+    public Reservation getCustomerReservation ( Customer customer ){
 
-        List<Reservation> resultList = reservations.stream()
-                .filter( pickedCustomer -> customer.equals(pickedCustomer.getCustomer()))
-                .map( pickedCustomer -> new Reservation(pickedCustomer.getCustomer(), pickedCustomer.getRoom(),
-                        pickedCustomer.getCheckInDate(), pickedCustomer.getCheckOutDate()))
+        List<Reservation> result = reservations.stream()
+                .filter(picked -> customer.getEmail().equals(picked.getCustomer().getEmail()))
+                .map( picked -> new Reservation( picked.getCustomer(), picked.getRoom(),
+                        picked.getCheckInDate(), picked.getCheckOutDate()))
                 .collect(Collectors.toList());
 
-        return resultList.iterator().next();
+        return result.iterator().next();
     }
 
 

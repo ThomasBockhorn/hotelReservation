@@ -35,9 +35,9 @@ public class HotelResource {
 
     }
 
-    public Room getRoom(String roomNumber){
+    public Room getRoom(String roomNumber, boolean isFree){
 
-       return reservationServiceSession.getARoom(roomNumber);
+       return reservationServiceSession.getARoom(roomNumber, isFree);
 
     }
 

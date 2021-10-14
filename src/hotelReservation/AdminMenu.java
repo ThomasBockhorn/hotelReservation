@@ -1,19 +1,18 @@
 package hotelReservation;
 
+import api.AdminResource;
+import api.HotelResource;
 import model.RoomTypes;
 import service.CustomerService;
 import service.ReservationService;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class AdminMenu {
 
-    public void AdminMenu(Scanner scanner ){
+    public void AdminMenu(Scanner scanner, HotelResource hotelResource, AdminResource adminResource){
 
         boolean keepRunning = true;
-        CustomerService customerService = new CustomerService();
-        ReservationService reservationService = new ReservationService();
 
         try(scanner) {
 
@@ -30,17 +29,23 @@ public class AdminMenu {
                     int selection = Integer.parseInt(scanner.nextLine());
 
                     if (selection == 1) {
+
                         System.out.println("=============== See all customers ===================");
-                        customerService.printAllCustomers();
+                        System.out.println(adminResource.getAllCustomers());
+
                     } else if (selection == 2) {
+
                         System.out.println("================ See all rooms ========================");
-                        System.out.println(reservationService.printAllRooms());
+                        System.out.println(adminResource.getAllRooms());
 
                     } else if (selection == 3) {
+
                         System.out.println("================ See all reservations ==================");
+                        System.out.println(adminResource.displayAllReservations());
+
                     } else if (selection == 4) {
+
                         System.out.println("================ Add a room =============================");
-                        //String roomNumber, Double price, RoomTypes.RoomType enumeration, boolean isFree
 
                         try{
                             System.out.println("What is the room number?");
@@ -55,7 +60,7 @@ public class AdminMenu {
                             System.out.println("Is it free?");
                             String isFree = scanner.nextLine();
 
-                           reservationService.addRoom(roomNumber,Double.valueOf(price),
+                           adminResource.addRoom(roomNumber,Double.valueOf(price),
                                     RoomTypes.RoomType.valueOf(enumeration) ,Boolean.parseBoolean(isFree));
 
                         } catch(Exception ex){
@@ -67,7 +72,7 @@ public class AdminMenu {
                         keepRunning = false;
 
                         ApplicationMenu menu = new ApplicationMenu();
-                        menu.ApplicationMenu();
+                        menu.ApplicationMenu(adminResource, hotelResource);
                     } else {
                         System.out.println("Please enter your selection");
                     }
