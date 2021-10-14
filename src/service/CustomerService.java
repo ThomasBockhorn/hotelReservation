@@ -6,14 +6,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Customer service class that sets up addCustomer, getCustomer
+ * Customer service class that sets up addCustomer, getCustomer, printAllCustomers
  */
+
 public class CustomerService {
 
     private Customer customer;
     static LinkedList<Customer> customers;
 
     public CustomerService(){
+        super();
         customers = new LinkedList<>();
     }
 
@@ -37,7 +39,8 @@ public class CustomerService {
 
         String customerList;
 
-        customerList = "List of all Customers: " + "\n";
+        customerList = "List of all Customers: " + "\n"
+                + "------------------------------------------" + "\n";
 
         for(Customer customer: customers){
 

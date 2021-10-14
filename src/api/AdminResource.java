@@ -1,16 +1,15 @@
 package api;
 
 import model.Customer;
-import model.Room;
 import model.RoomTypes;
 import service.CustomerService;
 import service.ReservationService;
 
-import java.util.List;
 
 /**
  * AdminResource interacts with the service classes
  */
+
 public class AdminResource {
 
     static CustomerService customerServiceSession;

@@ -11,6 +11,7 @@ import java.time.LocalDate;
 /**
  * This API class will interact with the service class
  */
+
 public class HotelResource {
 
     static CustomerService customerServiceSession;
