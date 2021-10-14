@@ -2,6 +2,7 @@ package hotelReservation;
 
 import api.AdminResource;
 import api.HotelResource;
+import hotelReservation.applicationMenu.CreateAAccount;
 import hotelReservation.applicationMenu.ReserveARoom;
 
 import java.time.LocalDate;
@@ -49,7 +50,6 @@ public class ApplicationMenu {
                             System.out.println("======================== Reserve a Room ===========================");
                             ReserveARoom reserveARoom = new ReserveARoom();
                             reserveARoom.ReserveARoom(scanner, hotelResource);
-
                             break;
 
                         /**
@@ -79,22 +79,8 @@ public class ApplicationMenu {
                          */
                         case 4:
                             System.out.println("======================== Create an Account ==========================");
-
-                            try{
-                                System.out.println("First Name: ");
-                                String firstName = scanner.nextLine();
-
-                                System.out.println("Last Name: ");
-                                String lastName = scanner.nextLine();
-
-                                System.out.println("Email: ");
-                                String email = scanner.nextLine();
-
-                                hotelResource.createACustomer(firstName, lastName, email);
-
-                            }catch(Exception ex){
-                                System.out.println("Please reenter your information");
-                            }
+                            CreateAAccount createAAccount = new CreateAAccount();
+                            createAAccount.CreateAAccount(scanner, hotelResource);
                             break;
 
                         /**
