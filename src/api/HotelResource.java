@@ -59,4 +59,9 @@ public class HotelResource {
         return reservationServiceSession.getCustomerReservation(customer);
     }
 
+    public Room findAFreeRoom(Boolean isFree){
+
+        return reservationServiceSession.findAllFreeRooms(isFree);
+    }
+
 }

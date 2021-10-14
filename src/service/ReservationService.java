@@ -97,11 +97,23 @@ public class ReservationService {
                 .map( pickedDate -> new Reservation( pickedDate.getCustomer(),
                         pickedDate.getRoom(), pickedDate.getCheckInDate(), pickedDate.getCheckOutDate()))
                 .collect(Collectors.toList());
-
-        return resultList.iterator().next();
+        if(resultList.isEmpty()){
+            return null;
+        } else {
+            return resultList.iterator().next();
+        }
     }
 
+    public Room findAllFreeRooms(Boolean isFree){
 
+        List<Room> resultList = roomList.stream()
+                .filter( pickedReservation -> isFree.equals(pickedReservation.isFree()))
+                .map( pickedReservation -> new Room( pickedReservation.getRoomNumber(),
+                        pickedReservation.getRoomPrice(), pickedReservation.getRoomType(),
+                        pickedReservation.isFree()))
+                .collect(Collectors.toList());
 
+        return roomList.iterator().next();
+    }
 
 }

@@ -3,9 +3,9 @@ package hotelReservation;
 import api.AdminResource;
 import api.HotelResource;
 import hotelReservation.applicationMenu.CreateAAccount;
+import hotelReservation.applicationMenu.FindARoom;
 import hotelReservation.applicationMenu.ReserveARoom;
 import hotelReservation.applicationMenu.SeeMyReservations;
-import model.Customer;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -33,16 +33,8 @@ public class ApplicationMenu {
                          */
                         case 1:
                             System.out.println("======================= Find a Room ==============================");
-
-                            try{
-                                System.out.println("Please enter a room number");
-                                String roomNumber = scanner.nextLine();
-
-                                System.out.println( hotelResource.getRoom( roomNumber, true));
-
-                            } catch(Exception ex) {
-                                System.out.println("Please reenter a room number");
-                            }
+                            FindARoom findARoom = new FindARoom();
+                            findARoom.FindARoom(scanner, hotelResource);
                             break;
 
                         /**
