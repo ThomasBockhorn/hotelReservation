@@ -56,7 +56,6 @@ public class AdminMenu {
                             System.out.println("================ Add a room =============================");
                             AddARoomMenu addARoomMenu = new AddARoomMenu();
                             addARoomMenu.addARoomMenu(scanner,adminResource);
-
                             break;
 
                         /**
@@ -64,10 +63,8 @@ public class AdminMenu {
                          */
                         case 5:
                             keepRunning = false;
-
                             ApplicationMenu menu = new ApplicationMenu();
                             menu.ApplicationMenu(adminResource, hotelResource);
-
                             break;
                          }
 
