@@ -6,6 +6,11 @@ import hotelReservation.adminMenu.AddARoomMenu;
 
 import java.util.Scanner;
 
+/**
+ * This is the admin menu.  It will allow the user to see all customers, all rooms, all reservations, and
+ * add a room
+ */
+
 public class AdminMenu {
 
     public void AdminMenu(Scanner scanner, HotelResource hotelResource, AdminResource adminResource){
