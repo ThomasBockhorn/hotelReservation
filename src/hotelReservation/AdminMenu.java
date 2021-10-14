@@ -19,12 +19,14 @@ public class AdminMenu {
             while (keepRunning) {
 
                 try {
-                    System.out.println("=================== Admin menu =======================");
-                    System.out.println("1. See all customers");
+                    System.out.println("=================== Admin menu =======================" + "\n"
+                    + "1. See all customers" + "\n" + "2. See all rooms" + "\n" + "3. See all reservations" +
+                    "\n" + "4. Add a room" + "\n" + "5. Back to main menu");
+                   /** System.out.println("1. See all customers");
                     System.out.println("2. See all rooms");
                     System.out.println("3. See all reservations");
                     System.out.println("4. Add a room");
-                    System.out.println("5. Back to main menu");
+                    System.out.println("5. Back to main menu");**/
 
                     int selection = Integer.parseInt(scanner.nextLine());
 
