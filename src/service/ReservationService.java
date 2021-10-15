@@ -24,8 +24,16 @@ public class ReservationService {
 
     public void addRoom(String roomNumber, Double price, RoomTypes.RoomType enumeration, boolean isFree){
 
-        Room newRoom = new Room(roomNumber,price,enumeration,isFree);
-        roomList.add(newRoom);
+        List<Room> roomCheck = roomList.stream()
+                .filter(checkRoom -> roomNumber.equals(checkRoom.getRoomNumber()))
+                .map(checkRoom -> new Room(checkRoom.getRoomNumber(), checkRoom.getRoomPrice(),
+                        checkRoom.getRoomType(), checkRoom.isFree()))
+                .collect(Collectors.toList());
+
+        if (roomCheck.isEmpty()){
+            Room newRoom = new Room(roomNumber,price,enumeration,isFree);
+            roomList.add(newRoom);
+        }
     }
 
     public Room getARoom(String roomID, Boolean isFree){
