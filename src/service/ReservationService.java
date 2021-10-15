@@ -59,10 +59,10 @@ public class ReservationService {
                         pickedReservation.getCheckInDate(), pickedReservation.getCheckOutDate(), pickedReservation.getFree()))
                 .collect(Collectors.toList());
 
-        if(result.isEmpty()){
-            Reservation reservation = new Reservation(customer,room,checkInDate,checkOutDate, isFree);
-            reservations.add(reservation);
-        }
+            if(result.isEmpty()){
+                Reservation reservation = new Reservation(customer,room,checkInDate,checkOutDate, isFree);
+                reservations.add(reservation);
+            }
     }
 
 

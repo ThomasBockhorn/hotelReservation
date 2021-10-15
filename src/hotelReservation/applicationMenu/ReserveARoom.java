@@ -30,8 +30,35 @@ public class ReserveARoom {
                 Customer customer = hotelResource.getCustomer(email);
                 Room roomID = hotelResource.getRoom(roomNumber, true);
 
-                hotelResource.bookARoom(customer, roomID, LocalDate.parse(checkInDate),
-                        LocalDate.parse(checkOutDate), false);
+                if(hotelResource.findARoom(LocalDate.parse(checkInDate), LocalDate.parse(checkOutDate)) == null){
+
+                    hotelResource.bookARoom(customer, roomID, LocalDate.parse(checkInDate),
+                            LocalDate.parse(checkOutDate), false);
+
+                }
+                else if((hotelResource.findARoom(LocalDate.parse(checkInDate).plusDays(7),
+                        LocalDate.parse(checkOutDate).plusDays(7))) == null){
+
+                    /**
+                     * Asks the user if 7 days later do
+                     */
+                    System.out.println("Would " + LocalDate.parse(checkInDate).plusDays(7) + " to " +
+                            LocalDate.parse(checkOutDate).plusDays(7) + " do?" + "\n" + "Yes(yes) or No(no)");
+                    String ask = scanner.nextLine();
+
+                    if( ask.equals("Yes") || ask.equals("yes")){
+
+                        LocalDate newCheckInDate = LocalDate.parse(checkInDate).plusDays(7);
+                        LocalDate newCheckOutDate = LocalDate.parse(checkOutDate).plusDays(7);
+
+                        hotelResource.bookARoom(customer, roomID, newCheckInDate,
+                                newCheckOutDate, false);
+
+                    } else{
+                        System.out.println("All rooms are booked for those dates");
+                    }
+                }
+
                 keepRunning = false;
 
             }catch(Exception ex){
