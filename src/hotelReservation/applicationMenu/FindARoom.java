@@ -13,10 +13,10 @@ public class FindARoom {
         while(running){
             try{
 
-                System.out.println("Enter your check in date");
+                System.out.println("Enter your check in date: YYYY-MM-DD");
                 String checkInDate = scanner.nextLine();
 
-                System.out.println("Enter your check out date");
+                System.out.println("Enter your check out date: YYYY-MM-DD");
                 String checkOutDate = scanner.nextLine();
 
                 if ( hotelResource.findARoom(LocalDate.parse(checkInDate),
@@ -28,9 +28,8 @@ public class FindARoom {
                 running = false;
 
             }catch(Exception ex){
-                System.out.println("Please reenter your information");
-                System.out.println(ex);
-                running = true;
+                System.out.println("No rooms can be found");
+                running = false;
             }
         }
     }

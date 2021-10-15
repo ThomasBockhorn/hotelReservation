@@ -22,8 +22,8 @@ public class SeeMyReservations {
                 running = false;
 
             }catch(Exception ex) {
-                System.out.println("Please Reenter your info" + "\n" + ex );
-                running = true;
+                System.out.println("Error in your input" );
+                running = false;
             }
         }
     }

@@ -35,9 +35,8 @@ public class ReserveARoom {
                 keepRunning = false;
 
             }catch(Exception ex){
-                System.out.println("Please reenter your information" + "\n");
-                System.out.println(ex);
-                keepRunning = true;
+                System.out.println("Error in reserving a room" + "\n");
+                keepRunning = false;
             }
         }
     }
