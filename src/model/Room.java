@@ -25,8 +25,7 @@ public class Room implements IRoom{
        return "---------------------------------" + "\n" +
                "Room number: " + roomNumber + "\n" +
                "Price: " + price + "\n" +
-               "Single or Double: " + enumeration + "\n"+
-               "Available: " + isFree + "\n";
+               "Single or Double: " + enumeration + "\n";
    }
 
     /**
