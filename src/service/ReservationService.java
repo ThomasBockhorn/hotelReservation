@@ -93,7 +93,7 @@ public class ReservationService {
     }
 
 
-    public Reservation getCustomerReservation ( Customer customer ){
+    public List<Reservation> getCustomerReservation ( Customer customer ){
 
         List<Reservation> result = reservations.stream()
                 .filter(picked -> customer.getFirstName().equals(picked.getCustomer().getFirstName()))
@@ -103,7 +103,7 @@ public class ReservationService {
                         picked.getCheckInDate(), picked.getCheckOutDate(), picked.getFree()))
                 .collect(Collectors.toList());
 
-        return result.iterator().next();
+            return result;
     }
 
 

@@ -19,6 +19,7 @@ public class SeeMyReservations {
                 Customer customer = hotelResource.getCustomer(email);
 
                 System.out.println(hotelResource.findACustomerReservation(customer));
+
                 running = false;
 
             }catch(Exception ex) {
