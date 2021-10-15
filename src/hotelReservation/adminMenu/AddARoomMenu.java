@@ -17,7 +17,7 @@ public class AddARoomMenu {
                 System.out.println("What is the price?");
                 String price = scanner.nextLine();
 
-                System.out.println("What is the room type?");
+                System.out.println("What is the room type? SINGLE or DOUBLE");
                 String enumeration = scanner.nextLine();
 
                 adminResource.addRoom(roomNumber, Double.valueOf(price),
