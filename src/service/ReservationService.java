@@ -51,8 +51,18 @@ public class ReservationService {
 
     public void reserveARoom (Customer customer, IRoom room, LocalDate checkInDate, LocalDate checkOutDate, Boolean isFree){
 
-        Reservation reservation = new Reservation(customer,room,checkInDate,checkOutDate, isFree);
-        reservations.add(reservation);
+        List<Reservation> result = reservations.stream()
+                .filter( pickedReservation -> room.getRoomNumber().equals(pickedReservation.getRoom().getRoomNumber()))
+                .filter( pickedReservation -> checkInDate.isEqual( pickedReservation.getCheckInDate()))
+                .filter( pickedReservation -> checkOutDate.isEqual( pickedReservation.getCheckOutDate()))
+                .map( pickedReservation -> new Reservation(pickedReservation.getCustomer(), pickedReservation.getRoom(),
+                        pickedReservation.getCheckInDate(), pickedReservation.getCheckOutDate(), pickedReservation.getFree()))
+                .collect(Collectors.toList());
+
+        if(result.isEmpty()){
+            Reservation reservation = new Reservation(customer,room,checkInDate,checkOutDate, isFree);
+            reservations.add(reservation);
+        }
     }
 
 
