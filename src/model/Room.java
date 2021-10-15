@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * This is the Room model.
  */
@@ -49,5 +51,18 @@ public class Room implements IRoom{
     @Override
     public boolean isFree(){
       return isFree;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return isFree == room.isFree && Objects.equals(roomNumber, room.roomNumber) && Objects.equals(price, room.price) && enumeration == room.enumeration;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roomNumber, price, isFree, enumeration);
     }
 }

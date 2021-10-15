@@ -21,8 +21,17 @@ public class CustomerService {
 
     public void addCustomer(String firstName, String lastName, String email){
 
-       customer = new Customer(firstName, lastName, email);
-       customers.add(customer);
+        List<Customer> query = customers.stream()
+                .filter( customer -> firstName.equals( customer.getFirstName()))
+                .filter( customer -> lastName.equals( customer.getLastName()))
+                .filter( customer -> email.equals( customer.getEmail()))
+                .map( customer -> new Customer(customer.getFirstName(),customer.getLastName(), customer.getEmail()))
+                .collect(Collectors.toList());
+
+        if(query.isEmpty()){
+            customer = new Customer(firstName, lastName, email);
+            customers.add(customer);
+        }
     }
 
     public Customer getCustomer(String customerEmail){
