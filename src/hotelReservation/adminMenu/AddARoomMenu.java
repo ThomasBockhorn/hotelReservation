@@ -20,11 +20,8 @@ public class AddARoomMenu {
                 System.out.println("What is the room type?");
                 String enumeration = scanner.nextLine();
 
-                System.out.println("Is it free?");
-                String isFree = scanner.nextLine();
-
                 adminResource.addRoom(roomNumber, Double.valueOf(price),
-                        RoomTypes.RoomType.valueOf(enumeration), Boolean.parseBoolean(isFree));
+                        RoomTypes.RoomType.valueOf(enumeration), true);
                 keepRunning = false;
 
             } catch (Exception ex) {
